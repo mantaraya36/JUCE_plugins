@@ -125,6 +125,7 @@ void PluginGUI::sliderValueChanged (Slider* sliderThatWasMoved)
     if (sliderThatWasMoved == slider)
     {
         //[UserSliderCode_slider] -- add your slider handling code here..
+        processor.setParameterNotifyingHost(0, sliderThatWasMoved->getValue());
         //[/UserSliderCode_slider]
     }
     else if (sliderThatWasMoved == slider2)

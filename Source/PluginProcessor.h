@@ -13,6 +13,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+#include <Oscillator.h>
 
 //==============================================================================
 /**
@@ -65,7 +66,13 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    enum {
+        MODFREQUENCY = 0,
+        NUM_PARAMS
+    };
 private:
+    float modFrequency;
+    gam::SineR<> sineOscillator;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginComponentGuiAudioProcessor)
 };

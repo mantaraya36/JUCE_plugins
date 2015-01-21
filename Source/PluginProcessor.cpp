@@ -29,26 +29,49 @@ const String PluginComponentGuiAudioProcessor::getName() const
 
 int PluginComponentGuiAudioProcessor::getNumParameters()
 {
-    return 0;
+    return NUM_PARAMS;
 }
 
 float PluginComponentGuiAudioProcessor::getParameter (int index)
 {
-    return 0.0f;
+    float value = 0.0f;
+    switch(index) {
+        case MODFREQUENCY:
+            value = modFrequency;
+        break;
+    }
+    return value;
 }
 
 void PluginComponentGuiAudioProcessor::setParameter (int index, float newValue)
 {
+    switch(index) {
+        case MODFREQUENCY:
+            modFrequency = newValue;
+        break;
+    }
 }
 
 const String PluginComponentGuiAudioProcessor::getParameterName (int index)
 {
-    return String();
+    String name = "";
+    switch(index) {
+        case MODFREQUENCY:
+            name = "Modulation frequency";
+        break;
+    }
+    return name;
 }
 
 const String PluginComponentGuiAudioProcessor::getParameterText (int index)
 {
-    return String();
+    String name = "";
+    switch(index) {
+        case MODFREQUENCY:
+            name = "Modulation frequency";
+        break;
+    }
+    return name;
 }
 
 const String PluginComponentGuiAudioProcessor::getInputChannelName (int channelIndex) const
@@ -144,16 +167,22 @@ void PluginComponentGuiAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
     // I've added this to avoid people getting screaming feedback
     // when they first compile the plugin, but obviously you don't need to
     // this code if your algorithm already fills all the output channels.
-    for (int i = getNumInputChannels(); i < getNumOutputChannels(); ++i)
+    for (int i = getNumInputChannels(); i < getNumOutputChannels(); ++i) 
         buffer.clear (i, 0, buffer.getNumSamples());
 
     // This is the place where you'd normally do the guts of your plugin's
     // audio processing...
+    
+    float blockPhase = sineOscillator.phase();
+    sineOscillator.freq(modFrequency);
     for (int channel = 0; channel < getNumInputChannels(); ++channel)
     {
-        float* channelData = buffer.getWritePointer (channel);
-
-        // ..do something to the data...
+        float* outBuffer = buffer.getWritePointer (channel);
+        const float* inBuffer = buffer.getReadPointer (channel);
+        sineOscillator.phase(blockPhase);
+        for (int samp = 0; samp < buffer.getNumSamples(); samp++) {
+            *outBuffer++ = *inBuffer++ * sineOscillator();
+        }
     }
 }
 

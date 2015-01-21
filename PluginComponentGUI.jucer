@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="VLt2nW" name="PluginComponentGUI" projectType="audioplug"
-              version="1.0.0" bundleIdentifier="com.yourcompany.PluginComponentGUI"
-              includeBinaryInAppConfig="1" buildVST="1" buildVST3="0" buildAU="0"
-              buildRTAS="0" buildAAX="0" pluginName="PluginComponentGUI" pluginDesc="PluginComponentGUI"
-              pluginManufacturer="cabrera" pluginManufacturerCode="Manu" pluginCode="Plug"
-              pluginChannelConfigs="{1, 1}, {2, 2}" pluginIsSynth="0" pluginWantsMidiIn="0"
-              pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
+<JUCERPROJECT id="VLt2nW" name="Ring Modulator" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.yourcompany.PluginComponentGUI" includeBinaryInAppConfig="1"
+              buildVST="1" buildVST3="0" buildAU="0" buildRTAS="0" buildAAX="0"
+              pluginName="Ring Modulator" pluginDesc="Ring Modulator" pluginManufacturer="cabrera"
+              pluginManufacturerCode="Manu" pluginCode="Plug" pluginChannelConfigs="{1, 1}, {2, 2}"
+              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
+              pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
               pluginAUExportPrefix="PluginComponentGUIAU" pluginRTASCategory=""
               aaxIdentifier="com.yourcompany.PluginComponentGUI" pluginAAXCategory="AAX_ePlugInCategory_Dynamics"
               jucerVersion="3.1.1">
-  <MAINGROUP id="kBVWrX" name="PluginComponentGUI">
+  <MAINGROUP id="kBVWrX" name="Ring Modulator">
     <GROUP id="{4D1FF1DD-6539-7B04-B7C6-4210A09BFA8D}" name="Source">
       <FILE id="pAo3jA" name="PluginGUI.cpp" compile="1" resource="0" file="Source/PluginGUI.cpp"/>
       <FILE id="CC3B3K" name="PluginGUI.h" compile="0" resource="0" file="Source/PluginGUI.h"/>
@@ -21,12 +21,15 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/Documents/src/vstsdk2.4">
+    <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/Documents/src/vstsdk2.4"
+                externalLibraries="Gamma">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
-                       targetName="PluginComponentGUI"/>
-        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="2"
-                       targetName="PluginComponentGUI"/>
+        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/;&#10;/usr/local/lib"
+                       isDebug="1" optimisation="1" targetName="PluginComponentGUI"
+                       headerPath="/usr/local/include/Gamma"/>
+        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/;&#10;/usr/local/lib"
+                       isDebug="0" optimisation="2" targetName="PluginComponentGUI"
+                       headerPath="/usr/local/include/Gamma"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
