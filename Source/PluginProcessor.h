@@ -66,12 +66,14 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    enum {
+    typedef enum {
         MODFREQUENCY = 0,
+        MODDEPTH,
         NUM_PARAMS
-    };
+    } parameter_t;
 private:
     float modFrequency;
+    float modDepth;
     gam::SineR<> sineOscillator;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginComponentGuiAudioProcessor)

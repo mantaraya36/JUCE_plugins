@@ -125,12 +125,17 @@ void PluginGUI::sliderValueChanged (Slider* sliderThatWasMoved)
     if (sliderThatWasMoved == slider)
     {
         //[UserSliderCode_slider] -- add your slider handling code here..
-        processor.setParameterNotifyingHost(0, sliderThatWasMoved->getValue());
+        processor.setParameterNotifyingHost(
+            PluginComponentGuiAudioProcessor::MODFREQUENCY,
+            sliderThatWasMoved->getValue());
         //[/UserSliderCode_slider]
     }
     else if (sliderThatWasMoved == slider2)
     {
         //[UserSliderCode_slider2] -- add your slider handling code here..
+        processor.setParameterNotifyingHost(
+            PluginComponentGuiAudioProcessor::MODDEPTH,
+            sliderThatWasMoved->getValue());
         //[/UserSliderCode_slider2]
     }
 

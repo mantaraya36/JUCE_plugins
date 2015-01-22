@@ -38,7 +38,10 @@ float PluginComponentGuiAudioProcessor::getParameter (int index)
     switch(index) {
         case MODFREQUENCY:
             value = modFrequency;
-        break;
+            break;
+        case MODDEPTH:
+            value = modDepth;
+            break;
     }
     return value;
 }
@@ -48,6 +51,10 @@ void PluginComponentGuiAudioProcessor::setParameter (int index, float newValue)
     switch(index) {
         case MODFREQUENCY:
             modFrequency = newValue;
+            break;
+        case MODDEPTH:
+            modDepth = newValue;
+            break;
         break;
     }
 }
@@ -59,6 +66,9 @@ const String PluginComponentGuiAudioProcessor::getParameterName (int index)
         case MODFREQUENCY:
             name = "Modulation frequency";
         break;
+        case MODDEPTH:
+            name = "Modulation depth";
+        break;
     }
     return name;
 }
@@ -69,6 +79,9 @@ const String PluginComponentGuiAudioProcessor::getParameterText (int index)
     switch(index) {
         case MODFREQUENCY:
             name = "Modulation frequency";
+        break;
+        case MODDEPTH:
+            name = "Modulation depth";
         break;
     }
     return name;
@@ -181,7 +194,7 @@ void PluginComponentGuiAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
         const float* inBuffer = buffer.getReadPointer (channel);
         sineOscillator.phase(blockPhase);
         for (int samp = 0; samp < buffer.getNumSamples(); samp++) {
-            *outBuffer++ = *inBuffer++ * sineOscillator();
+            *outBuffer++ = *inBuffer++ * (1.0 +(sineOscillator() * modDepth))/2.0;
         }
     }
 }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="VLt2nW" name="Ring Modulator" projectType="audioplug" version="1.0.0"
-              bundleIdentifier="com.yourcompany.PluginComponentGUI" includeBinaryInAppConfig="1"
-              buildVST="1" buildVST3="0" buildAU="0" buildRTAS="0" buildAAX="0"
-              pluginName="Ring Modulator" pluginDesc="Ring Modulator" pluginManufacturer="cabrera"
-              pluginManufacturerCode="Manu" pluginCode="Plug" pluginChannelConfigs="{1, 1}, {2, 2}"
-              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
-              pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
+<JUCERPROJECT id="VLt2nW" name="Amplitude Modulator" projectType="audioplug"
+              version="1.0.0" bundleIdentifier="com.yourcompany.PluginComponentGUI"
+              includeBinaryInAppConfig="1" buildVST="1" buildVST3="0" buildAU="0"
+              buildRTAS="0" buildAAX="0" pluginName="Amplitude Modulator" pluginDesc="Amplitude Modulator"
+              pluginManufacturer="cabrera" pluginManufacturerCode="Manu" pluginCode="Plug"
+              pluginChannelConfigs="{1, 1}, {2, 2}" pluginIsSynth="0" pluginWantsMidiIn="0"
+              pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
               pluginAUExportPrefix="PluginComponentGUIAU" pluginRTASCategory=""
               aaxIdentifier="com.yourcompany.PluginComponentGUI" pluginAAXCategory="AAX_ePlugInCategory_Dynamics"
               jucerVersion="3.1.1">
-  <MAINGROUP id="kBVWrX" name="Ring Modulator">
+  <MAINGROUP id="kBVWrX" name="Amplitude Modulator">
     <GROUP id="{4D1FF1DD-6539-7B04-B7C6-4210A09BFA8D}" name="Source">
       <FILE id="pAo3jA" name="PluginGUI.cpp" compile="1" resource="0" file="Source/PluginGUI.cpp"/>
       <FILE id="CC3B3K" name="PluginGUI.h" compile="0" resource="0" file="Source/PluginGUI.h"/>
