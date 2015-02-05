@@ -35,8 +35,7 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class PluginGUI  : public AudioProcessorEditor,
-                   public SliderListener
+class PluginGUI  : public AudioProcessorEditor
 {
 public:
     //==============================================================================
@@ -49,7 +48,6 @@ public:
 
     void paint (Graphics& g);
     void resized();
-    void sliderValueChanged (Slider* sliderThatWasMoved);
 
 
 
@@ -59,10 +57,6 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    ScopedPointer<Slider> slider;
-    ScopedPointer<Label> label;
-    ScopedPointer<Slider> slider2;
-    ScopedPointer<Label> label2;
 
 
     //==============================================================================
