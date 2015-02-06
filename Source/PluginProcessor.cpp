@@ -16,7 +16,7 @@
 PluginComponentGuiAudioProcessor::PluginComponentGuiAudioProcessor()
 {
     for (int i = 0; i < 2047; i++) {
-        shaperFunction[i] = sin((-M_PI / 2) + (2 * M_PI * i / (2048 *2 - 1));
+        shaperFunction[i] = sin((-M_PI / 2) + (2 * M_PI * i / (2048 *2 - 1)));
     }
 }
 
@@ -157,12 +157,12 @@ void PluginComponentGuiAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
         float* outbuf = buffer.getWritePointer (channel);
         const float* inbuf = buffer.getReadPointer (channel);
         
-        for (int samp = 0; samp < buffer.getNumSamples(), samp++) {
+        for (int samp = 0; samp < buffer.getNumSamples(); samp++) {
             float insamp = *inbuf++;
             int indexA = floor(insamp * 1023);
             float frac = (insamp*1023) - indexA;
-            float bottom = shaperFunc[indexA + 1023]
-            *outbuf++ = bottom + frac*(shaperFunc[indexA + 1024] - bottom);
+            float bottom = shaperFunction[indexA + 1023];
+            *outbuf++ = bottom + frac * (shaperFunction[indexA + 1024] - bottom);
         }
 
         // ..do something to the data...
